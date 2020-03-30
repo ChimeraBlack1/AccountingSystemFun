@@ -77,7 +77,7 @@ def CreateAccount(Accounts):
         else:
             created = True
     
-    return account
+    return account, accountNumber
 
 
 def PrintAccounts(Accounts):
@@ -101,8 +101,10 @@ while loop:
     print("Please make a selection")
     selection = input("> ")
     if selection == "1":
-        newAccount = CreateAccount(Accounts)
-        print(newAccount)
+        newAccountTuple = CreateAccount(Accounts)
+        newAccount = newAccountTuple[0]
+        newAccountNumber = newAccountTuple[1]
+        Accounts[newAccountNumber] = newAccount[newAccountNumber]
     if selection == "3":
         PrintAccounts(Accounts)
 
@@ -127,4 +129,3 @@ while loop:
 
 
 # print("credit was " + str(credit) + " and debit was " + str(debit))
-
